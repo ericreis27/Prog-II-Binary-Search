@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1530235855 source:c:\users\user\desktop\projeto_final\chocolate.c
+	<stdio.h>
+	<stdlib.h>
+	"chocolate.h"
+	"lista_enc.h"
+	"no.h"
+	<string.h>
+
+1530235855 c:\users\user\desktop\projeto_final\chocolate.h
+	"lista_enc.h"
+	"no.h"
+
+1522970196 c:\users\user\desktop\projeto_final\lista_enc.h
+	"no.h"
+
+1522970196 c:\users\user\desktop\projeto_final\no.h
+
+1522970196 source:c:\users\user\desktop\projeto_final\lista_enc.c
+	<stdio.h>
+	<stdlib.h>
+	"lista_enc.h"
+	"no.h"
+
+1522970196 source:c:\users\user\desktop\projeto_final\no.c
+	<stdio.h>
+	<stdlib.h>
+	"no.h"
+
+1530236000 source:c:\users\user\desktop\projeto_final\main.c
+	<stdio.h>
+	<stdlib.h>
+	"no.h"
+	"lista_enc.h"
+
