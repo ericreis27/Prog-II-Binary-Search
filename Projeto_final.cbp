@@ -31,9 +31,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="chocolate.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="chocolate.h" />
+		<Unit filename="lista_enc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lista_enc.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="no.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="no.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

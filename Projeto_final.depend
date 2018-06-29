@@ -33,3 +33,71 @@
 	"no.h"
 	"lista_enc.h"
 
+1530282219 source:c:\users\aluno\desktop\prog-ii-binary-search-master\chocolate.c
+	<stdio.h>
+	<stdlib.h>
+	"chocolate.h"
+	"lista_enc.h"
+	"no.h"
+	<string.h>
+
+1530280299 c:\users\aluno\desktop\prog-ii-binary-search-master\chocolate.h
+	"lista_enc.h"
+	"no.h"
+
+1530276833 c:\users\aluno\desktop\prog-ii-binary-search-master\lista_enc.h
+	"no.h"
+
+1530276833 c:\users\aluno\desktop\prog-ii-binary-search-master\no.h
+
+1530276833 source:c:\users\aluno\desktop\prog-ii-binary-search-master\lista_enc.c
+	<stdio.h>
+	<stdlib.h>
+	"lista_enc.h"
+	"no.h"
+
+1530282063 source:c:\users\aluno\desktop\prog-ii-binary-search-master\main.c
+	<stdio.h>
+	<stdlib.h>
+	"no.h"
+	"lista_enc.h"
+
+1530276833 source:c:\users\aluno\desktop\prog-ii-binary-search-master\no.c
+	<stdio.h>
+	<stdlib.h>
+	"no.h"
+
+1530268200 source:c:\users\ericr_000\desktop\prog-ii-binary-search-master\lista_enc.c
+	<stdio.h>
+	<stdlib.h>
+	"lista_enc.h"
+	"no.h"
+
+1530268202 c:\users\ericr_000\desktop\prog-ii-binary-search-master\lista_enc.h
+	"no.h"
+
+1530268202 c:\users\ericr_000\desktop\prog-ii-binary-search-master\no.h
+
+1530268202 source:c:\users\ericr_000\desktop\prog-ii-binary-search-master\no.c
+	<stdio.h>
+	<stdlib.h>
+	"no.h"
+
+1530286981 source:c:\users\ericr_000\desktop\prog-ii-binary-search-master\chocolate.c
+	<stdio.h>
+	<stdlib.h>
+	"chocolate.h"
+	"lista_enc.h"
+	"no.h"
+	<string.h>
+
+1530286992 c:\users\ericr_000\desktop\prog-ii-binary-search-master\chocolate.h
+	"lista_enc.h"
+	"no.h"
+
+1530286566 source:c:\users\ericr_000\desktop\prog-ii-binary-search-master\main.c
+	<stdio.h>
+	<stdlib.h>
+	"no.h"
+	"lista_enc.h"
+
