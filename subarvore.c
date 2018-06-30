@@ -142,7 +142,7 @@ chocolate_t* subarvore_get_dados(subarvore_t * subarvore){
 }
 
 
-chocolate_t* subarvore_set_dados(subarvore_t * subarvore, chocolate_t* chocolate){
+void subarvore_set_dados(subarvore_t * subarvore, chocolate_t* chocolate){
 
     if (subarvore == NULL){
         fprintf(stderr, "subarvore_set_dados: subarvore invalido\n");

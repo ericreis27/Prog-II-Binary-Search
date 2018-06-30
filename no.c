@@ -79,7 +79,7 @@ void *obter_dado (no_t *no)
     return no->dados;
 }
 
-no_t *obtem_proximo (no_t *no)
+no_t *obter_proximo (no_t *no)
 {
     if (no == NULL) {
         fprintf(stderr,"liga_nos: ponteiros invalidos");
@@ -89,7 +89,7 @@ no_t *obtem_proximo (no_t *no)
     return no->proximo;
 }
 
-no_t *obtem_anterior (no_t *no)
+no_t *obter_anterior (no_t *no)
 {
     if (no == NULL) {
         fprintf(stderr,"liga_nos: ponteiros invalidos");

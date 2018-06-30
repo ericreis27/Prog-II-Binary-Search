@@ -43,12 +43,12 @@ lista_enc_t *leitura_arquivo(char *arquivo){
 
     if(fp == NULL){
         printf("nao foi possivel abrir o arquivo");
-        return EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
 
     fgets(buffer_aux,sizeof(buffer_aux), fp);   //pula a primeira linha
     while(fgets(buffer_aux, sizeof(buffer_aux), fp) != NULL){
-        sscanf(buffer_aux, "%[^,], %[^,], %u, %u, %[^,], %[^,], %f, %[^,], %[^\0]", empresa, nome_barra, &ref, &data_review, percentual_cacau, localizacao_empresa, &avaliacao, tipo_grao, origem_grao);     //pega 1 linha
+        sscanf(buffer_aux, "%[^,], %[^,], %u, %u, %[^,], %[^,], %f, %[^,], %[^\n]", empresa, nome_barra, &ref, &data_review, percentual_cacau, localizacao_empresa, &avaliacao, tipo_grao, origem_grao);     //pega 1 linha
         dados = cria_chocolate_bar(empresa, nome_barra, ref, data_review, percentual_cacau, localizacao_empresa, avaliacao, tipo_grao, origem_grao);
         no = cria_no(dados);
         add_cauda(lista, no);
@@ -59,11 +59,11 @@ lista_enc_t *leitura_arquivo(char *arquivo){
 }
 
 void imprime_chocolate(lista_enc_t *lista){
-    no_t *p = obtem_cabeca(lista);
+    no_t *p = obter_cabeca(lista);
     while(p!= NULL){
-        chocolate_t *dados = obtem_dado(p);
+        chocolate_t *dados = obter_dado(p);
         printf("%s, %s, %u, %u, %s, %s, %.2f, %s, %s\n", dados->empresa, dados->nome_barra, dados->ref, dados->data_review, dados->percentual_cacau, dados->localizacao_empresa, dados->avaliacao, dados->tipo_grao, dados->origem_grao);
-        p = obtem_proximo(p);
+        p = obter_proximo(p);
     }
     return ;
 }
@@ -71,13 +71,13 @@ void imprime_chocolate(lista_enc_t *lista){
 void libera_chocolate(lista_enc_t *lista){
 
     chocolate_t *dados;
-    no_t *no = obtem_cabeca(lista);
+    no_t *no = obter_cabeca(lista);
 
     while(no){
         no_t *no_prox;
-        dados = obtem_dado(no);
+        dados = obter_dado(no);
         free(dados);
-        no_prox = obtem_proximo(no);
+        no_prox = obter_proximo(no);
         free(no);
         no = no_prox;
     }

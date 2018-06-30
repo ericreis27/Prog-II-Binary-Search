@@ -11,8 +11,8 @@ void desliga_no (no_t *no);
 void desliga_no_anterior (no_t *no);
 void desliga_no_proximo (no_t *no);
 
-no_t *obtem_proximo (no_t *no);
-no_t *obtem_anterior (no_t *no);
+no_t *obter_proximo (no_t *no);
+no_t *obter_anterior (no_t *no);
 void *obter_dado (no_t *no);
 
 #endif // NO_H_INCLUDED

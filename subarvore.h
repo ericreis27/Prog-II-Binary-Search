@@ -14,6 +14,6 @@ int subarvore_get_id(subarvore_t *subarvore);
 int subarvore_get_dist(subarvore_t *subarvore);
 int verifica_subarvore_e_folha(subarvore_t *subarvore);
 chocolate_t* subarvore_get_dados(subarvore_t * subarvore);
-
+void subarvore_set_dados(subarvore_t * subarvore, chocolate_t* chocolate);
 
 #endif // SUBARVORE_H_INCLUDED

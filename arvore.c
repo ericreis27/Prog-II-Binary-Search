@@ -58,7 +58,7 @@ subarvore_t * arvore_adicionar_subarvore_id(arvore_t *arvore, int id, chocolate_
 	}
 
 	subarvore = cria_subarvore(id);
-	subarvore = subarvore_set_dados(subarvore);           //inicializacao do chocolate
+    subarvore_set_dados(subarvore, chocolate);           //inicializacao do chocolate
 	no = cria_no(subarvore);
 	add_cauda(arvore->subarvores, no);
 	return subarvore;
@@ -83,7 +83,7 @@ subarvore_t *procura_subarvore (arvore_t *arvore, int id)
 
 	while (no_lista)
 	{
-		//obtem o endereco da lista
+		//obter o endereco da lista
 		subarvore = obter_dado(no_lista);
 
 		//obterm o id do arvore
@@ -93,7 +93,7 @@ subarvore_t *procura_subarvore (arvore_t *arvore, int id)
 			return subarvore;
 		}
 
-		no_lista = obtem_proximo(no_lista);
+		no_lista = obter_proximo(no_lista);
 	}
 
 	return NULL;
@@ -142,7 +142,7 @@ void libera_arvore (arvore_t *arvore)
 	no_subarvore = obter_cabeca(arvore->subarvores);
 	while (no_subarvore){
 		subarvore = obter_dado(no_subarvore);
-		no_proximo = obtem_proximo(no_subarvore);
+		no_proximo = obter_proximo(no_subarvore);
 		free(subarvore);
 		free(no_subarvore);
 		no_subarvore = no_proximo;
@@ -248,13 +248,13 @@ void arvore_montar_arvore(arvore_t *arvore){
 
     no_t* p = obter_cabeca(arvore->subarvores);
     subarvore = obter_dado(p);          //pego a primeira, seto como raiz e pulo ela e vai para a proxima
-    p = obtem_proximo(p);
+    p = obter_proximo(p);
     arvore_set_raiz(arvore, subarvore);
     while(p != NULL){                   // loop de varredura
         aux  = arvore->raiz;
         subarvore = obter_dado(p);
         chocolate_aux1 = subarvore_get_dados(subarvore);
-        rating_1= chocolate_get_rating(chocolate_aux1);
+        rating_1 = chocolate_get_rating(chocolate_aux1);
 
         while(1){
 
@@ -287,7 +287,7 @@ void arvore_montar_arvore(arvore_t *arvore){
 
         }
 
-        p = obtem_proximo(p);
+        p = obter_proximo(p);
     }
 
 }
