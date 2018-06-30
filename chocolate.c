@@ -58,7 +58,7 @@ lista_enc_t *leitura_arquivo(char *arquivo){
     return lista;
 }
 
-void imprime_arquivo(lista_enc_t *lista){
+void imprime_chocolate(lista_enc_t *lista){
     no_t *p = obtem_cabeca(lista);
     while(p!= NULL){
         chocolate_t *dados = obtem_dado(p);
@@ -68,7 +68,7 @@ void imprime_arquivo(lista_enc_t *lista){
     return ;
 }
 
-void libera_arquivo(lista_enc_t *lista){
+void libera_chocolate(lista_enc_t *lista){
 
     chocolate_t *dados;
     no_t *no = obtem_cabeca(lista);
@@ -100,4 +100,15 @@ chocolate_t* cria_chocolate_bar(char empresa[], char nome_barra[], unsigned int 
     strcpy(dados->origem_grao,origem_grao);
 
     return dados;
+}
+
+float chocolate_get_rating(chocolate_t *chocolate){
+
+    if (chocolate == NULL){
+        fprintf(stderr, "chocolate_get_rating: chocolate estragado\n");
+		exit(EXIT_FAILURE);
+	}
+
+    return chocolate->avaliacao;
+
 }
