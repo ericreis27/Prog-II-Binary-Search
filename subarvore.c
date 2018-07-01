@@ -15,6 +15,21 @@ struct subarvore{
     int dist;
     chocolate_t *dado;
 };
+
+//-----------------------------------------------------------------------
+
+subarvore_t* subarvore_remove_subarvore(subarvore_t* subarvore){
+    if (subarvore == NULL)	{
+		perror("subarvore_remove_subarvore: subarvore invalido\n");
+		exit(EXIT_FAILURE);
+    }
+    subarvore_t* aux_subarvore = subarvore;
+    subarvore_t* pai = subarvore_get_pai(subarvore);
+    pai->esquerda == NULL;
+
+    return aux_subarvore;
+}
+
 //-----------------------------------------------------------------------
 
 
@@ -84,6 +99,17 @@ subarvore_t * subarvore_get_esq(subarvore_t *subarvore)
     return subarvore->esquerda;
 }
 //-----------------------------------------------------------------------
+subarvore_t * subarvore_get_pai(subarvore_t *subarvore){
+
+    if (subarvore == NULL){
+        fprintf(stderr, "subarvore_get_pai: subarvore invalido\n");
+		exit(EXIT_FAILURE);
+	}
+
+    return subarvore->pai;
+}
+
+//-----------------------------------------------------------------------
 subarvore_t * subarvore_get_dir(subarvore_t *subarvore)
 {
     if (subarvore == NULL){
@@ -152,4 +178,3 @@ void subarvore_set_dados(subarvore_t * subarvore, chocolate_t* chocolate){
    subarvore->dado = chocolate;
 
 }
-

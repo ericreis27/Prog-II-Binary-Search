@@ -248,7 +248,7 @@ void arvore_montar_arvore(arvore_t *arvore){
 
     no_t* p = obter_cabeca(arvore->subarvores);
     subarvore = obter_dado(p);          //pego a primeira, seto como raiz e pulo ela e vai para a proxima
-    p = obter_proximo(p);
+    p = obter_proximo(p);               //ja aponta para o proximo elemento e em subarvore tem o primeiro chocolate
     arvore_set_raiz(arvore, subarvore);
     while(p != NULL){                   // loop de varredura
         aux  = arvore->raiz;
@@ -293,12 +293,30 @@ void arvore_montar_arvore(arvore_t *arvore){
 }
 
 subarvore_t* arvore_achar_min(arvore_t* arvore){
-
+    float rating;
     subarvore_t* aux = arvore->raiz;
-
+    chocolate_t* dado;
+    int id = 0;
     while(subarvore_get_esq(aux) != NULL){                   // loop de varredura
+
+        //dado = subarvore_get_dados(aux);
+       //rating = chocolate_get_rating(dado);
+       // id = subarvore_get_id(aux);
+       // printf("\n\nid:%d", id);
+
+        //printf("\nnota: %.2f", rating);
         aux = subarvore_get_esq(aux);
+        //int id_prox_esq = subarvore_get_id(aux);
+        //printf("\nid proximo esquerda: %d", id_prox_esq);
     }
+
+        /*dado = subarvore_get_dados(aux);
+        rating = chocolate_get_rating(dado);
+        id = subarvore_get_id(aux);
+        printf("\n\nid:%d", id);
+
+        printf("\nnota: %.2f", rating);
+        aux = subarvore_get_esq(aux);*/
         return aux;
 }
 
@@ -313,5 +331,35 @@ subarvore_t* arvore_achar_max(arvore_t* arvore){
     }
 
         return aux;
+}
+
+
+void arvore_deleta_elemento_min(arvore_t* arvore){
+    subarvore_t* aux_subarvore;
+    subarvore_t* aux_pai_subarvore;
+    subarvore_t* subarvore = arvore_achar_min(arvore);
+    int id = subarvore_get_id(subarvore);
+    printf("\n\nid:%d\n", id);
+
+    if(((subarvore_get_dir(subarvore) == NULL)) && ((subarvore_get_esq(subarvore)) == NULL)){
+        printf("\nsem filhos\n");
+        aux_subarvore = subarvore;                  //salva a subarvore atual
+        subarvore = subarvore_get_pai(subarvore);   //salva na subarvore
+        subarvore_set_esq(subarvore, NULL);
+    }
+
+    if((subarvore_get_dir(subarvore) != NULL)){
+        printf("\n1 filho_direita");
+        aux_subarvore = subarvore;   //salva a subarvore atual
+        aux_pai_subarvore = subarvore_get_pai(subarvore);
+        subarvore = subarvore_get_dir(subarvore);
+        subarvore_set_dir(aux_pai_subarvore, subarvore);
+        subarvore_set_pai(subarvore, aux_pai_subarvore);
+        subarvore_set_dir(aux_subarvore, NULL);
+        subarvore_set_pai(aux_subarvore, NULL);
+
+    }
+
+     printf("\n----------------------------------------");
 }
 

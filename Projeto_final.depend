@@ -101,7 +101,7 @@
 	"no.h"
 	"lista_enc.h"
 
-1530417550 source:c:\users\user\documents\github\prog-ii-binary-search\arvore.c
+1530484961 source:c:\users\user\documents\github\prog-ii-binary-search\arvore.c
 	<stdio.h>
 	<stdlib.h>
 	<stdarg.h>
@@ -117,10 +117,10 @@
 
 1530399327 c:\users\user\documents\github\prog-ii-binary-search\no.h
 
-1530416021 c:\users\user\documents\github\prog-ii-binary-search\subarvore.h
+1530473905 c:\users\user\documents\github\prog-ii-binary-search\subarvore.h
 	"chocolate.h"
 
-1530415633 c:\users\user\documents\github\prog-ii-binary-search\arvore.h
+1530476400 c:\users\user\documents\github\prog-ii-binary-search\arvore.h
 	"lista_enc.h"
 	"subarvore.h"
 
@@ -142,7 +142,7 @@
 	"lista_enc.h"
 	"no.h"
 
-1530417565 source:c:\users\user\documents\github\prog-ii-binary-search\main.c
+1530484558 source:c:\users\user\documents\github\prog-ii-binary-search\main.c
 	<stdio.h>
 	<stdlib.h>
 	"no.h"
@@ -154,7 +154,7 @@
 	<stdlib.h>
 	"no.h"
 
-1530417493 source:c:\users\user\documents\github\prog-ii-binary-search\subarvore.c
+1530475924 source:c:\users\user\documents\github\prog-ii-binary-search\subarvore.c
 	<stdlib.h>
 	<stdio.h>
 	<stdarg.h>
