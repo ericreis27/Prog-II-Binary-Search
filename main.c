@@ -17,6 +17,15 @@ int main()
         p = obter_proximo(p);
     }
     arvore_montar_arvore(arvore);
+
+    //teste de achar maximo e minimo
+    subarvore_t *teste = arvore_achar_min(arvore);
+    int id = subarvore_get_id(teste);
+    printf("\n\nid min:%d\n", id);
+    teste = arvore_achar_max(arvore);
+    id = subarvore_get_id(teste);
+    printf("id max:%d", id);
+
     exportar_arvore_dot("teste.dot", arvore);
 
 

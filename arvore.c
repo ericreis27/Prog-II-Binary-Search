@@ -292,4 +292,26 @@ void arvore_montar_arvore(arvore_t *arvore){
 
 }
 
+subarvore_t* arvore_achar_min(arvore_t* arvore){
+
+    subarvore_t* aux = arvore->raiz;
+
+    while(subarvore_get_esq(aux) != NULL){                   // loop de varredura
+        aux = subarvore_get_esq(aux);
+    }
+        return aux;
+}
+
+
+
+subarvore_t* arvore_achar_max(arvore_t* arvore){
+
+    subarvore_t* aux = arvore->raiz;
+
+    while(subarvore_get_dir(aux) != NULL){                   // loop de varredura
+        aux = subarvore_get_dir(aux);
+    }
+
+        return aux;
+}
 

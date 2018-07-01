@@ -20,6 +20,8 @@ void preordem_recursiva(subarvore_t *subarvore, FILE *file);
 void posordem_recursiva (subarvore_t *subarvore);
 void emordem_recursiva (subarvore_t *subarvore);
 void arvore_montar_arvore(arvore_t *arvore);
+subarvore_t* arvore_achar_min(arvore_t* arvore);
+subarvore_t* arvore_achar_max(arvore_t* arvore);
 //percorrendo arvores: largura
 void largura (arvore_t *arvore);
 
