@@ -21,13 +21,16 @@ int main()
 
     //--------------Montagem da arvore
     arvore_montar_arvore(arvore);
+    /*arvore_deleta_elemento_min(arvore);
     arvore_deleta_elemento_min(arvore);
     arvore_deleta_elemento_min(arvore);
     arvore_deleta_elemento_min(arvore);
-    arvore_deleta_elemento_min(arvore);
-    arvore_deleta_elemento_min(arvore);
+    arvore_deleta_elemento_min(arvore);*/
+    arvore_deleta_elemento_max(arvore);
+    arvore_achar_max(arvore);
    // arvore_achar_min(arvore);
-    subarvore_t *teste = arvore_achar_min(arvore);
+    //subarvore_t *teste = arvore_achar_min(arvore);
+    //subarvore_t *teste2 = arvore_achar_max(arvore);
     //teste = subarvore_get_esq(teste);
     //int id = subarvore_get_id(teste);
     //printf("id proximo esquerda: %d", id);

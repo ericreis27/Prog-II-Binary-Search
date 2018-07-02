@@ -232,12 +232,12 @@ void exportar_arvore_dot(const char *filename, arvore_t *arvore)
 		exit(EXIT_FAILURE);
 	}
 
-	fprintf(file, "arvore {\n");
+	fprintf(file, "graph {\n");
     preordem_recursiva(arvore->raiz, file);
 	fprintf(file, "}\n");
 	fclose(file);
 }
-
+//------------------------------------------------------------------------------------------------------------------------------
 void arvore_montar_arvore(arvore_t *arvore){
     subarvore_t* subarvore;
     subarvore_t* aux;
@@ -291,7 +291,7 @@ void arvore_montar_arvore(arvore_t *arvore){
     }
 
 }
-
+//----------------------------------------------------------------------------------------------------------------------------
 subarvore_t* arvore_achar_min(arvore_t* arvore){
     float rating;
     subarvore_t* aux = arvore->raiz;
@@ -321,7 +321,7 @@ subarvore_t* arvore_achar_min(arvore_t* arvore){
 }
 
 
-
+//--------------------------------------------------------------------------------------------------------------------------------
 subarvore_t* arvore_achar_max(arvore_t* arvore){
 
     subarvore_t* aux = arvore->raiz;
@@ -333,7 +333,7 @@ subarvore_t* arvore_achar_max(arvore_t* arvore){
         return aux;
 }
 
-
+//-----------------------------------------------------------------------------------------------------------------------------
 void arvore_deleta_elemento_min(arvore_t* arvore){
     subarvore_t* aux_subarvore;
     subarvore_t* aux_pai_subarvore;
@@ -341,11 +341,11 @@ void arvore_deleta_elemento_min(arvore_t* arvore){
     int id = subarvore_get_id(subarvore);
     printf("\n\nid:%d\n", id);
 
-    if(((subarvore_get_dir(subarvore) == NULL)) && ((subarvore_get_esq(subarvore)) == NULL)){
+    if((subarvore_get_dir(subarvore) == NULL) && (subarvore_get_esq(subarvore) == NULL)){
         printf("\nsem filhos\n");
-        aux_subarvore = subarvore;                  //salva a subarvore atual
-        subarvore = subarvore_get_pai(subarvore);   //salva na subarvore
-        subarvore_set_esq(subarvore, NULL);
+        //aux_subarvore = subarvore;                  //salva a subarvore atual
+        aux_pai_subarvore = subarvore_get_pai(subarvore);   //salva na subarvore
+        subarvore_set_esq(aux_pai_subarvore, NULL);
     }
 
     if((subarvore_get_dir(subarvore) != NULL)){
@@ -355,6 +355,7 @@ void arvore_deleta_elemento_min(arvore_t* arvore){
         subarvore = subarvore_get_dir(subarvore);
         subarvore_set_dir(aux_pai_subarvore, subarvore);
         subarvore_set_pai(subarvore, aux_pai_subarvore);
+        subarvore_set_esq(aux_pai_subarvore, NULL);
         subarvore_set_dir(aux_subarvore, NULL);
         subarvore_set_pai(aux_subarvore, NULL);
 
@@ -362,4 +363,34 @@ void arvore_deleta_elemento_min(arvore_t* arvore){
 
      printf("\n----------------------------------------");
 }
+//------------------------------------------------------------------------------------------------------------------------------
 
+void arvore_deleta_elemento_max(arvore_t* arvore){
+    subarvore_t* aux_subarvore;
+    subarvore_t* aux_pai_subarvore;
+    subarvore_t* subarvore = arvore_achar_max(arvore);
+    int id = subarvore_get_id(subarvore);
+    printf("\n\nid:%d\n", id);
+
+    if((subarvore_get_dir(subarvore) == NULL) && (subarvore_get_esq(subarvore) == NULL)){
+        printf("\nsem filhos\n");
+        //aux_subarvore = subarvore;                  //salva a subarvore atual
+        aux_pai_subarvore = subarvore_get_pai(subarvore);   //salva na subarvore
+        subarvore_set_dir(aux_pai_subarvore, NULL);
+    }
+
+    if((subarvore_get_esq(subarvore) != NULL)){
+        printf("\n1 filho_esquerda");
+        aux_subarvore = subarvore;   //salva a subarvore atual
+        aux_pai_subarvore = subarvore_get_pai(subarvore);
+        subarvore = subarvore_get_esq(subarvore);
+        subarvore_set_esq(aux_pai_subarvore, subarvore);
+        subarvore_set_pai(subarvore, aux_pai_subarvore);
+        subarvore_set_dir(aux_pai_subarvore, NULL);
+        subarvore_set_esq(aux_subarvore, NULL);
+        subarvore_set_pai(aux_subarvore, NULL);
+
+    }
+
+     printf("\n----------------------------------------");
+}
