@@ -9,10 +9,9 @@
 #include "chocolate.h"
 #define FALSE 0
 #define TRUE 1
-
 #define INFINITY INT_MAX
-
 #define DEBUG
+
 
 struct arvore{
     int id;
@@ -237,53 +236,27 @@ void exportar_arvore_dot(const char *filename, arvore_t *arvore)
 	fprintf(file, "}\n");
 	fclose(file);
 }
-//------------------------------------------------------------------------------------------------------------------------------
-void arvore_montar_arvore(arvore_t *arvore){
-    subarvore_t* subarvore;
-    subarvore_t* aux;
-    chocolate_t* chocolate_aux1;
-    float rating_1;
 
-    no_t* p = obter_cabeca(arvore->subarvores);
-    subarvore = obter_dado(p);          //pego a primeira, seto como raiz e pulo ela e vai para a proxima
-    p = obter_proximo(p);               //ja aponta para o proximo elemento e em subarvore tem o primeiro chocolate
-    arvore_set_raiz(arvore, subarvore);
-    while(p != NULL){                   // loop de varredura
-        aux  = arvore->raiz;            // aux aponta para a raiz
-        subarvore = obter_dado(p);
-        chocolate_aux1 = subarvore_get_dados(subarvore);
-        rating_1 = chocolate_get_rating(chocolate_aux1);
-        arvore_inserir_chocolate(arvore, rating_1, aux, subarvore);
-        p = obter_proximo(p);
-    }
-
-}
 //----------------------------------------------------------------------------------------------------------------------------
 subarvore_t* arvore_achar_min(arvore_t* arvore){
-    //float rating;
+
+
     subarvore_t* aux = arvore->raiz;
-    //chocolate_t* dado;
-    //int id = 0;
     while(subarvore_get_esq(aux) != NULL){                   // loop de varredura
 
-        //dado = subarvore_get_dados(aux);
-       //rating = chocolate_get_rating(dado);
-       // id = subarvore_get_id(aux);
-       // printf("\n\nid:%d", id);
-
-        //printf("\nnota: %.2f", rating);
-        aux = subarvore_get_esq(aux);
-        //int id_prox_esq = subarvore_get_id(aux);
-        //printf("\nid proximo esquerda: %d", id_prox_esq);
-    }
-
-        /*dado = subarvore_get_dados(aux);
-        rating = chocolate_get_rating(dado);
+        #ifdef DEBUG                    //mostra o caminho percorrido ate o menor elemento e as avaliacoes.
+        float rating;                   //Obs: ele mostra 2 vezes porque a funcao eh chamada 2 vezes ao deletar um elemento.
+        chocolate_t*dado;
+        int id = 0;
+         dado = subarvore_get_dados(aux);
+       rating = chocolate_get_rating(dado);
         id = subarvore_get_id(aux);
         printf("\n\nid:%d", id);
-
         printf("\nnota: %.2f", rating);
-        aux = subarvore_get_esq(aux);*/
+        #endif
+
+        aux = subarvore_get_esq(aux);
+    }
         return aux;
 }
 
@@ -294,7 +267,21 @@ subarvore_t* arvore_achar_max(arvore_t* arvore){
     subarvore_t* aux = arvore->raiz;
 
     while(subarvore_get_dir(aux) != NULL){                   // loop de varredura
+
+
+        #ifdef DEBUG                    //mostra o caminho percorrido ate o maior elemento e as avaliacoes.
+        float rating;                   //Obs: ele mostra 2 vezes porque a funcao eh chamada 2 vezes ao deletar um elemento.
+        chocolate_t*dado;
+        int id = 0;
+        dado = subarvore_get_dados(aux);
+        rating = chocolate_get_rating(dado);
+        id = subarvore_get_id(aux);
+        printf("\n\nid:%d", id);
+        printf("\nnota: %.2f", rating);
+        #endif
+
         aux = subarvore_get_dir(aux);
+
     }
 
         return aux;
@@ -305,18 +292,26 @@ void arvore_deleta_elemento_min(arvore_t* arvore){
     subarvore_t* aux_subarvore;
     subarvore_t* aux_pai_subarvore;
     subarvore_t* subarvore = arvore_achar_min(arvore);
+
+    #ifdef DEBUG
     int id = subarvore_get_id(subarvore);
-    printf("\n\nid:%d\n", id);
+    printf("\n\nID menor numero:%d\n", id);
+    #endif //Debug
 
     if((subarvore_get_dir(subarvore) == NULL) && (subarvore_get_esq(subarvore) == NULL)){
-        printf("\nsem filhos\n");
-        //aux_subarvore = subarvore;                  //salva a subarvore atual
+        #ifdef DEBUG
+        printf("\nQuantidade de filhos: sem filhos\n");
+        #endif //Debug
+
         aux_pai_subarvore = subarvore_get_pai(subarvore);   //salva na subarvore
         subarvore_set_esq(aux_pai_subarvore, NULL);
     }
 
     if((subarvore_get_dir(subarvore) != NULL)){
-        printf("\n1 filho_direita");
+        #ifdef DEBUG
+        printf("\nQuantidade de filhos: 1 filho direita\n");
+        #endif //Debug
+
         aux_subarvore = subarvore;   //salva a subarvore atual
         aux_pai_subarvore = subarvore_get_pai(subarvore);
         subarvore = subarvore_get_dir(subarvore);
@@ -328,7 +323,6 @@ void arvore_deleta_elemento_min(arvore_t* arvore){
 
     }
 
-     printf("\n----------------------------------------");
 }
 //------------------------------------------------------------------------------------------------------------------------------
 
@@ -336,18 +330,26 @@ void arvore_deleta_elemento_max(arvore_t* arvore){
     subarvore_t* aux_subarvore;
     subarvore_t* aux_pai_subarvore;
     subarvore_t* subarvore = arvore_achar_max(arvore);
-    int id = subarvore_get_id(subarvore);
-    printf("\n\nid:%d\n", id);
+
+        #ifdef DEBUG
+        int id = subarvore_get_id(subarvore);
+        printf("\n\nID maior numero:%d\n", id);
+        #endif //Debug
 
     if((subarvore_get_dir(subarvore) == NULL) && (subarvore_get_esq(subarvore) == NULL)){
-        printf("\nsem filhos\n");
-        //aux_subarvore = subarvore;                  //salva a subarvore atual
+        #ifdef DEBUG
+        printf("\nQuantidade de filhos: sem filhos\n");
+        #endif //Debug
+
         aux_pai_subarvore = subarvore_get_pai(subarvore);   //salva na subarvore
         subarvore_set_dir(aux_pai_subarvore, NULL);
     }
 
     if((subarvore_get_esq(subarvore) != NULL)){
-        printf("\n1 filho_esquerda");
+        #ifdef DEBUG
+        printf("\nQuantidade de filhos: 1 filho esquerda\n");
+        #endif //Debug
+
         aux_subarvore = subarvore;   //salva a subarvore atual
         aux_pai_subarvore = subarvore_get_pai(subarvore);
         subarvore = subarvore_get_esq(subarvore);
@@ -357,8 +359,6 @@ void arvore_deleta_elemento_max(arvore_t* arvore){
         subarvore_set_pai(aux_subarvore, NULL);
 
     }
-
-     printf("\n----------------------------------------");
 }
 
 void arvore_inserir_chocolate(arvore_t* arvore, float rating_1, subarvore_t* aux, subarvore_t* subarvore){
@@ -414,5 +414,4 @@ subarvore_t* arvore_get_raiz(arvore_t* arvore){
 
     return arvore->raiz;
 
- }
-
+}

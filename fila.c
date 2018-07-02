@@ -43,11 +43,6 @@ void enqueue_chocolate(chocolate_t* chocolate, fila_t *fila){
     subarvore_t* subarvore = arvore_adicionar_subarvore_id(fila->arvore,fila->count_id, chocolate);
 
 
-
-    #ifdef DEBUG
-    printf("enqueue: %x\n", dado);
-    #endif // DEBUG
-
     arvore_inserir_chocolate(fila->arvore, chocolate_get_rating(chocolate), arvore_get_raiz(fila->arvore), subarvore);
     fila->count_id++;
 }

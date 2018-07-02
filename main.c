@@ -4,78 +4,61 @@
 #include "lista_enc.h"
 #include "arvore.h"
 #include "fila.h"
-
+#define DEBUG
+#define Exit 0
 int main()
 {
+
+
     lista_enc_t *lista;
     lista = leitura_arquivo("flavors_of_cacao.csv");
     no_t *p = obter_cabeca(lista);
     fila_t* fila = cria_fila();
     chocolate_t* chocolate;
     float rating;
+    int escolha_usuario;
 
-   //----------------Loop de varredura da lista de chocolate e passa para a arvore
+   //Loop de varredura da lista de chocolate e passa para a fila
+
     while(p != NULL){
         chocolate_t *dados = obter_dado(p);
         enqueue_chocolate(dados, fila);
         p = obter_proximo(p);
     }
+    //Debug para impressao da lista
+    #ifdef DEBUG
+	imprime_lista_chocolate(lista);
+    #endif
 
+    //menu
 
-    dequeue_min(fila);
-    dequeue_min(fila);
-    dequeue_min(fila);
-    dequeue_min(fila);
-    dequeue_min(fila);
-    chocolate = dequeue_min(fila);
-    rating = chocolate_get_rating(chocolate);
-    printf("\n%f", rating);
+    printf("Bem vindo a fila de prioridade com busca binaria!\n\n");
 
-    chocolate = dequeue_max(fila);
-    chocolate = dequeue_max(fila);
-    rating = chocolate_get_rating(chocolate);
-    printf("\nrating: %f", rating);
+   //entrada do usuario
 
+    while(1){
+    printf("Gostaria de retirar o maior ou menor elemento: \n1 - Maior\n2 - Menor\n0 - Sair do programa\n");
+    scanf("%d", &escolha_usuario);
 
+    switch(escolha_usuario){
 
+        case 1:
+            chocolate = dequeue_max(fila);
+            imprime_chocolate(chocolate);
+            break;
+        case 2:
+            chocolate = dequeue_min(fila);
+            imprime_chocolate(chocolate);
+            break;
+        case Exit:
+            goto exit_switch;
+        default:
+            printf("entrada_invalida\n");
+            exit(EXIT_FAILURE);
 
-    //--------------Montagem da arvore
-    //arvore_montar_arvore(arvore);
-
-    /*arvore_deleta_elemento_min(arvore);
-    arvore_deleta_elemento_min(arvore);
-    arvore_deleta_elemento_min(arvore);
-    arvore_deleta_elemento_min(arvore);
-    arvore_deleta_elemento_min(arvore);*/
-    //arvore_deleta_elemento_max(arvore);
-    //arvore_achar_max(arvore);
-   // arvore_achar_min(arvore);
-    //subarvore_t *teste = arvore_achar_min(arvore);
-    //subarvore_t *teste2 = arvore_achar_max(arvore);
-    //teste = subarvore_get_esq(teste);
-    //int id = subarvore_get_id(teste);
-    //printf("id proximo esquerda: %d", id);
-
-/*
-    //teste de achar maximo e minimo
-
-    /*subarvore_t *teste = arvore_achar_min(arvore);
-    int id = subarvore_get_id(teste);
-    printf("\n\nid min:%d\n", id);
-    teste = arvore_achar_max(arvore);
-    id = subarvore_get_id(teste);
-    printf("id max:%d", id);
-
-    arvore_deleta_elemento_min(arvore);
-    arvore_deleta_elemento_min(arvore);
-    arvore_deleta_elemento_min(arvore);
-    arvore_deleta_elemento_min(arvore);
-
-    subarvore_t *teste = arvore_achar_min(arvore);
-    int id = subarvore_get_id(teste);
-    printf("\n\nid min:%d\n", id);
-*/
-
+    }
+    }
+    exit_switch:           //label para sair do switch
     exportar_arvore_dot("teste.dot", fila_get_arvore(fila));
 
 

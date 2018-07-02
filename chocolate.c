@@ -11,7 +11,6 @@ struct chocolate_bar {
     unsigned int ref;
     unsigned int data_review;
     char percentual_cacau[100];
-    //unsigned int percentual_cacau;
     char localizacao_empresa[100];
     float avaliacao;
     char tipo_grao[100];
@@ -57,14 +56,20 @@ lista_enc_t *leitura_arquivo(char *arquivo){
     fclose(fp);
     return lista;
 }
-
-void imprime_chocolate(lista_enc_t *lista){
+void imprime_lista_chocolate(lista_enc_t *lista){
     no_t *p = obter_cabeca(lista);
     while(p!= NULL){
         chocolate_t *dados = obter_dado(p);
         printf("%s, %s, %u, %u, %s, %s, %.2f, %s, %s\n", dados->empresa, dados->nome_barra, dados->ref, dados->data_review, dados->percentual_cacau, dados->localizacao_empresa, dados->avaliacao, dados->tipo_grao, dados->origem_grao);
         p = obter_proximo(p);
     }
+    return ;
+}
+
+void imprime_chocolate(chocolate_t* dados){
+        printf("\n\nDescricao do chocolate escolhido:\n");
+        printf("%s, %s, %u, %u, %s, %s, %.2f, %s, %s\n\n", dados->empresa, dados->nome_barra, dados->ref, dados->data_review, dados->percentual_cacau, dados->localizacao_empresa, dados->avaliacao, dados->tipo_grao, dados->origem_grao);
+
     return ;
 }
 
