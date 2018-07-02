@@ -25,5 +25,6 @@ subarvore_t* arvore_achar_max(arvore_t* arvore);
 //percorrendo arvores: largura
 void largura (arvore_t *arvore);
 void arvore_deleta_elemento_min(arvore_t* arvore);
-
+void arvore_inserir_chocolate(arvore_t* arvore, float rating_1, subarvore_t* raiz, subarvore_t* subarvore);
+subarvore_t* arvore_get_raiz(arvore_t* arvore);
 #endif // ARVORE_H_INCLUDED
