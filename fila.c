@@ -87,16 +87,12 @@ chocolate_t* dequeue_min(fila_t *fila){
 
 void libera_fila(fila_t* fila){
     if (fila == NULL) {
-        fprintf(stderr, "Erro em libera_fila\n");
+        fprintf(stderr, "Erro em liberar_fila\n");
         exit(EXIT_FAILURE);
-    }
-
-    if (fila_vazia(fila) == 0){
-    	fprintf(stderr, "Impossivel liberar fila, ainda ha dados\n");
-		exit(EXIT_FAILURE);
     }
     libera_arvore(fila->arvore);
     free(fila);
+
 }
 
 int fila_vazia(fila_t *fila)

@@ -146,6 +146,7 @@ void libera_arvore (arvore_t *arvore)
 		free(no_subarvore);
 		no_subarvore = no_proximo;
 	}
+	//arvore->raiz = NULL;
 	free(arvore->subarvores);
 	free(arvore);
 }
