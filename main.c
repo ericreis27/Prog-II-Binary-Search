@@ -4,7 +4,7 @@
 #include "lista_enc.h"
 #include "arvore.h"
 #include "fila.h"
-#define DEBUG
+//#define DEBUG
 #define Exit 0
 int main()
 {
@@ -60,7 +60,7 @@ int main()
     }
     exit_switch:           //label para sair do switch
     exportar_arvore_dot("teste.dot", fila_get_arvore(fila));
-
+    libera_fila(fila);
 
     return 0;
 }

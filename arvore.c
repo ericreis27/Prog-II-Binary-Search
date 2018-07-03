@@ -10,7 +10,7 @@
 #define FALSE 0
 #define TRUE 1
 #define INFINITY INT_MAX
-#define DEBUG
+//#define DEBUG
 
 
 struct arvore{
@@ -415,3 +415,9 @@ subarvore_t* arvore_get_raiz(arvore_t* arvore){
     return arvore->raiz;
 
 }
+
+
+
+
+
+

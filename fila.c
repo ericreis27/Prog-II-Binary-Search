@@ -85,31 +85,35 @@ chocolate_t* dequeue_min(fila_t *fila){
     return chocolate;
 }
 
-/*void libera_fila(fila_t* fila){
+void libera_fila(fila_t* fila){
     if (fila == NULL) {
         fprintf(stderr, "Erro em libera_fila\n");
         exit(EXIT_FAILURE);
     }
 
-    if (!lista_vazia(fila->dados)){
+    if (fila_vazia(fila) == 0){
     	fprintf(stderr, "Impossivel liberar fila, ainda ha dados\n");
 		exit(EXIT_FAILURE);
     }
-
-    free(fila->dados);
+    libera_arvore(fila->arvore);
     free(fila);
 }
 
 int fila_vazia(fila_t *fila)
 {
-    if (fila == NULL) {
+    if (arvore_get_raiz(fila->arvore) == NULL) {
         fprintf(stderr, "fila_vazia: fila invalida\n");
         exit(EXIT_FAILURE);
     }
 
-    return lista_vazia(fila->dados);
+    if (arvore_get_raiz(fila->arvore) == NULL){
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }
-*/
+
 
 arvore_t* fila_get_arvore(fila_t* fila){
 
